@@ -1,0 +1,317 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-white text-[#2B303B] font-sans;
+  }
+}
+
+/* Custom scrollbar for a sleek look */
+@layer utilities {
+  /* For WebKit browsers (Chrome, Safari) */
+  .scrollbar-custom::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-track {
+    background: #f3f4f6; /* gray-100 */
+    border-radius: 10px;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-thumb {
+    background: #d1d5db; /* gray-300 */
+    border-radius: 10px;
+    border: 2px solid #f3f4f6; /* gray-100 */
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af; /* gray-400 */
+  }
+
+  /* For Firefox */
+  .scrollbar-custom {
+    scrollbar-width: thin;
+    scrollbar-color: #d1d5db #f3f4f6;
+  }
+}
+
+/* New CSS for the interactive spinner */
+.spinner-container {
+  display: inline-block;
+  cursor: pointer;
+  perspective: 800px; /* Essential for 3D effect */
+  perspective-origin: 50% 50%;
+}
+
+.spinner-cube { /* Renamed from .spinner to avoid conflict/clarity */
+  width: 50px;
+  height: 50px;
+  --clr: #007BFF; /* Blue color */
+  --clr-alpha: rgba(247, 197, 159, 0.1);
+  transform-style: preserve-3d;
+  position: relative;
+  /* Initial 3D transformation to make it look like a cube at rest */
+  transform: rotate(45deg) rotateX(-25deg) rotateY(25deg); /* Matches the 0% keyframe */
+  transition: transform 0.2s ease-out; /* Smooth transition for non-spinning state */
+}
+
+.spinner-cube.spin {
+  animation: spinner 2s linear infinite;
+}
+
+.spinner-cube > div {
+  background-color: var(--clr-alpha);
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  border: 2.5px solid var(--clr);
+}
+
+.spinner-cube div:nth-of-type(1) {
+  transform: translateZ(-25px) rotateY(180deg);
+}
+
+.spinner-cube div:nth-of-type(2) {
+  transform: rotateY(-270deg) translateX(50%);
+  transform-origin: top right;
+}
+
+.spinner-cube div:nth-of-type(3) {
+  transform: rotateY(270deg) translateX(-50%);
+  transform-origin: center left;
+}
+
+.spinner-cube div:nth-of-type(4) {
+  transform: rotateX(90deg) translateY(-50%);
+  transform-origin: top center;
+}
+
+.spinner-cube div:nth-of-type(5) {
+  transform: rotateX(-90deg) translateY(50%);
+  transform-origin: bottom center;
+}
+
+.spinner-cube div:nth-of-type(6) {
+  transform: translateZ(25px);
+}
+@keyframes spinner {
+  0% { transform: rotate(45deg) rotateX(-25deg) rotateY(25deg); }
+  50% { transform: rotate(45deg) rotateX(-385deg) rotateY(25deg); }
+  100% { transform: rotate(45deg) rotateX(-385deg) rotateY(385deg); }
+}
+@layer base {
+  body {
+    @apply bg-white text-[#2B303B] font-sans;
+  }
+}
+
+/* --- Core SVG Animation CSS --- */
+
+.core-animation-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4rem; /* Match the original spacing */
+}
+
+#svg-global {
+  zoom: 1.2;
+  overflow: visible;
+}
+
+@keyframes fade-particles {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+}
+
+#particles {
+  animation: fade-particles 5s infinite alternate;
+}
+.particle {
+  animation: floatUp linear infinite;
+}
+
+.p1 {
+  animation-duration: 2.2s;
+  animation-delay: 0s;
+}
+.p2 {
+  animation-duration: 2.5s;
+  animation-delay: 0.3s;
+}
+.p3 {
+  animation-duration: 2s;
+  animation-delay: 0.6s;
+}
+.p4 {
+  animation-duration: 2.8s;
+  animation-delay: 0.2s;
+}
+.p5 {
+  animation-duration: 2.3s;
+  animation-delay: 0.4s;
+}
+.p6 {
+  animation-duration: 3s;
+  animation-delay: 0.1s;
+}
+.p7 {
+  animation-duration: 2.1s;
+  animation-delay: 0.5s;
+}
+.p8 {
+  animation-duration: 2.6s;
+  animation-delay: 0.2s;
+}
+.p9 {
+  animation-duration: 2.4s;
+  animation-delay: 0.3s;
+}
+
+@keyframes bounce-lines {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+#line-v1,
+#line-v2,
+#node-server,
+#panel-rigth,
+#reflectores,
+#particles {
+  animation: bounce-lines 3s ease-in-out infinite alternate;
+}
+#line-v2 {
+  animation-delay: 0.2s;
+}
+
+#node-server,
+#panel-rigth,
+#reflectores,
+#particles {
+  animation-delay: 0.4s;
+}
+
+/* --- End of Core SVG Animation CSS --- */
+
+
+/* Custom scrollbar for a sleek look */
+@layer utilities {
+  /* For WebKit browsers (Chrome, Safari) */
+  .scrollbar-custom::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-track {
+    background: #f3f4f6; /* gray-100 */
+    border-radius: 10px;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-thumb {
+    background: #d1d5db; /* gray-300 */
+    border-radius: 10px;
+    border: 2px solid #f3f4f6; /* gray-100 */
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af; /* gray-400 */
+  }
+
+  /* For Firefox */
+  .scrollbar-custom {
+    scrollbar-width: thin;
+    scrollbar-color: #d1d5db #f3f4f6;
+  }
+}
+
+/* New CSS for the interactive spinner */
+.spinner-container {
+  display: inline-block;
+  cursor: pointer;
+  perspective: 800px; /* Essential for 3D effect */
+  perspective-origin: 50% 50%;
+}
+
+.spinner-cube { /* Renamed from .spinner to avoid conflict/clarity */
+  width: 50px;
+  height: 50px;
+  --clr: #007BFF; /* Blue color */
+  --clr-alpha: rgba(247, 197, 159, 0.1);
+  transform-style: preserve-3d;
+  position: relative;
+  /* Initial 3D transformation to make it look like a cube at rest */
+  transform: rotate(45deg) rotateX(-25deg) rotateY(25deg); /* Matches the 0% keyframe */
+  transition: transform 0.2s ease-out; /* Smooth transition for non-spinning state */
+}
+
+.spinner-cube.spin {
+  animation: spinner 2s linear infinite;
+}
+
+.spinner-cube > div {
+  background-color: var(--clr-alpha);
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  border: 2.5px solid var(--clr);
+}
+
+.spinner-cube div:nth-of-type(1) {
+  transform: translateZ(-25px) rotateY(180deg);
+}
+
+.spinner-cube div:nth-of-type(2) {
+  transform: rotateY(-270deg) translateX(50%);
+  transform-origin: top right;
+}
+
+.spinner-cube div:nth-of-type(3) {
+  transform: rotateY(270deg) translateX(-50%);
+  transform-origin: center left;
+}
+
+.spinner-cube div:nth-of-type(4) {
+  transform: rotateX(90deg) translateY(-50%);
+  transform-origin: top center;
+}
+
+.spinner-cube div:nth-of-type(5) {
+  transform: rotateX(-90deg) translateY(50%);
+  transform-origin: bottom center;
+}
+
+.spinner-cube div:nth-of-type(6) {
+  transform: translateZ(25px);
+}
+@keyframes spinner {
+  0% { transform: rotate(45deg) rotateX(-25deg) rotateY(25deg); }
+  50% { transform: rotate(45deg) rotateX(-385deg) rotateY(25deg); }
+  100% { transform: rotate(45deg) rotateX(-385deg) rotateY(385deg); }
+}
